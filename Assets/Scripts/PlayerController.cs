@@ -22,10 +22,13 @@ public class PlayerController : MonoBehaviour
 
     public Boundary boundary;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     private void Awake()
     {
         rig = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour
         {
             nextFire = Time.time + fireRate; 
             Instantiate(shot, shotSpawn.position, Quaternion.identity);
+            audioSource.Play();
         }
     }
     // Update is called once per frame
