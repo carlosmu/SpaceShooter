@@ -35,7 +35,10 @@ public class Done_GameController : MonoBehaviour
 		{
 			if (Input.GetKeyDown (KeyCode.R))
 			{
-				Application.LoadLevel (Application.loadedLevel);
+				// Con esta tira error porque está deprecated
+				//Application.LoadLevel (Application.loadedLevel);
+				// Esta es la nueva forma, que funciona ok.
+				//SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
 			}
 		}
 	}
