@@ -18,8 +18,8 @@ public class GameController : MonoBehaviour
     public Text scoreText;
 
     //Variables para gameOver y restart
-    public Text restartText;
-    public Text gameOverText;
+    public GameObject restartGameObject;
+    public GameObject gameOverGameObject;
     
     private bool restart;
     private bool gameOver;
@@ -29,10 +29,10 @@ public class GameController : MonoBehaviour
     {
         // Restart en false y ocultar su texto de nueva partida
         restart = false;
-        restartText.gameObject.SetActive(false);
+        restartGameObject.SetActive(false);
         // Game Over en false y ocultar su texto
         gameOver = false;
-        gameOverText.gameObject.SetActive(false);
+        gameOverGameObject.SetActive(false);
         // Poner el Score en 0 y Actualizar score
         score = 0;
         UpdateScore();
@@ -45,8 +45,13 @@ public class GameController : MonoBehaviour
         if(restart && Input.GetKeyDown(KeyCode.R))
         {
             // Recarga la escena en base a la escena activa.
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+            Restart();             
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // Instanciar holas de asterioide mientras las condiciones se cumplan
@@ -67,7 +72,7 @@ public class GameController : MonoBehaviour
             // Si hemos perdido, mostrar el texto para una nueva partida
             if (gameOver)
             {
-                restartText.gameObject.SetActive(true);
+                restartGameObject.SetActive(true);
                 restart = true;
                 break;
             }
@@ -89,7 +94,7 @@ public class GameController : MonoBehaviour
     // Game over
     public void GameOver()
     {
-        gameOverText.gameObject.SetActive(true);
+        gameOverGameObject.SetActive(true);
         gameOver = true;
     }
 
