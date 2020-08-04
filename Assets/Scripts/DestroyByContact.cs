@@ -8,7 +8,7 @@ public class DestroyByContact : MonoBehaviour
     public GameObject playerExplosion;
 
     public int scoreValue;
-    public GameController gameController;
+    private GameController gameController;
 
     void Start()
     {

@@ -33,7 +33,17 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-         
+        UpdateBoundary();
+    }
+
+    void UpdateBoundary()
+    {
+        // Calculamos el boundary por el cual se mueve el player
+        Vector2 half = Utils.GetHalfDimensionsInWorldUnits();
+        boundary.xMin = -half.x + 0.7f;
+        boundary.xMax = half.x - 0.7f;
+        boundary.zMin = -half.y + 8f;
+        boundary.zMax = half.y - 2f;
     }
 
     void Update()

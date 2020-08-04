@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject hazard; // Daño
+    public GameObject[] hazards; // Asteroide    
     public Vector3 spawnValues; // Posición de Instanciación de asteroides
     public int hazardCount; // Cantidad de asteroides
     public float spawnWait; // Tiempo de espera de instanciación de asteroides (por cada uno de ellos)
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UpdateSpawnValues();
         // Restart en false y ocultar su texto de nueva partida
         restart = false;
         restartGameObject.SetActive(false);
@@ -38,6 +40,13 @@ public class GameController : MonoBehaviour
         UpdateScore();
         // Corrutina de Instanciar Olas de Asteroides
         StartCoroutine(SpawnWaves());        
+    }
+
+    void UpdateSpawnValues()
+    {
+        // Calcula el espacio para spawn dinámicamente en base al ratio del dispositivo
+        Vector2 half = Utils.GetHalfDimensionsInWorldUnits();
+        spawnValues = new Vector3(half.x - 0.7f, 0f, half.y + 6f);
     }
 
     void Update()
@@ -63,6 +72,9 @@ public class GameController : MonoBehaviour
             // Generar olas de asteroides
             for (int i=0; i<hazardCount; i++)
             {
+                // Crea la variable para el asteroide unico. Selecciona aleatoriamente entre 0 y el total de elementos.
+                GameObject hazard = hazards[Random.Range(0,hazards.Length)];
+                // Instancia en la posición indicada en spawn values
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Instantiate(hazard, spawnPosition, Quaternion.identity);
                 yield return new WaitForSeconds(spawnWait);
