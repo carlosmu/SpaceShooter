@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2564669595222521811}
   - component: {fileID: 425874746}
   - component: {fileID: 425874747}
+  - component: {fileID: 904117490}
   m_Layer: 0
   m_Name: EnemyShip
   m_TagString: Enemy
@@ -208,6 +209,29 @@ MonoBehaviour:
   shotSpawn: {fileID: 5851939246221229466}
   delay: 0.5
   fireRate: 1
+--- !u!114 &904117490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564669595222521822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e57d80bbd9fe24ca9ab0275ee1943f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dodge: 5
+  smoothing: 10
+  startWait: {x: 0, y: 1}
+  maneuverTime: {x: 0.5, y: 2}
+  maneuverWait: {x: 0, y: 1}
+  boundary:
+    xMin: 0
+    xMax: 0
+    zMin: 0
+    zMax: 0
+  tilt: 10
 --- !u!1 &3209488327683845547
 GameObject:
   m_ObjectHideFlags: 0
