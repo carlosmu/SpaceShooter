@@ -15,13 +15,6 @@ public class Mover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rig.velocity = transform.forward * speed;
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        rig.velocity = transform.forward * speed;        
     }
 }

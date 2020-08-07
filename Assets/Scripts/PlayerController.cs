@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
     {
         UpdateBoundary();
     }
-
     void UpdateBoundary()
     {
         // Calculamos el boundary por el cual se mueve el player
@@ -45,7 +44,6 @@ public class PlayerController : MonoBehaviour
         boundary.zMin = -half.y + 8f;
         boundary.zMax = half.y - 2f;
     }
-
     void Update()
     {
         if (CrossPlatformInputManager.GetButton("Fire1") && Time.time > nextFire)
