@@ -1,2 +1,5 @@
 # Space Shooter
-Based on: https://www.youtube.com/playlist?list=PLREdURb87ks3rXXhx2MWERiNTVcG_y_1v
+Coding exercise based on Unity official learn resources.
+
+![space shooter](screenshot.jpg)
+
